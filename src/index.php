@@ -11,10 +11,10 @@
       theme: {
         extend: {
           colors: {
-            light: "#F5F5F5",      // fond clair
-            silver: "#C0C0C0",     // accents métalliques
+            light: "#F5F5F5", // fond clair
+            silver: "#C0C0C0", // accents métalliques
             anthracite: "#2E2E2E", // gris foncé élégant
-            blacklux: "#1B1B1B"    // noir profond
+            blacklux: "#1B1B1B" // noir profond
           },
           fontFamily: {
             sans: ["Inter", "Helvetica", "Arial", "sans-serif"],
