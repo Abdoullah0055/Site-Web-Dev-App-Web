@@ -29,7 +29,7 @@
 <body class="bg-light text-anthracite font-sans m-0 p-0">
 
   <!-- Header -->
-  <nav class="bg-blacklux border-b border-anthracite">
+  <nav class="bg-anthracite border-b border-anthracite">
     <?php include "include/nav.php"; ?>
   </nav>
 
