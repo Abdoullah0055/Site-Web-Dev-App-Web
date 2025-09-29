@@ -26,7 +26,11 @@
     }
   </script>
 </head>
-
+<!-- 
+TO DO: 
+- Changer le chemin du fichier pour ne plus avoir d'espaces dans l'URL.
+-  
+-->
 <body class="bg-light text-anthracite font-sans m-0 p-0">
 
   <!-- Header -->

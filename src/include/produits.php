@@ -20,7 +20,7 @@
 
 
         // $chemin = "fichiers_information/annonces.csv";
-        //$chemin = "https://prog101.com/cours/kb9/bd/annonces.csv";
+        $chemin = "https://prog101.com/cours/kb9/bd/annonces.csv";
         if (file_exists($chemin) && fopen($chemin, "r") !== false)
             $fich = fopen($chemin, "r");
         else
