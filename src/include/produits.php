@@ -19,7 +19,8 @@
         //     echo "Le troisieme chemin est bon.";
 
 
-        $chemin = "fichiers_information/annonces.csv";
+        // $chemin = "fichiers_information/annonces.csv";
+        //$chemin = "https://prog101.com/cours/kb9/bd/annonces.csv";
         if (file_exists($chemin) && fopen($chemin, "r") !== false)
             $fich = fopen($chemin, "r");
         else
@@ -40,11 +41,8 @@
                 $image = $ligne[4];
                 $vendeur = $ligne[5];
             }
-
             creerPoste($titre, $description, $prix, $negociable, $image, $vendeur);
         }
-
-
         ?>
 
     </div>
