@@ -21,30 +21,28 @@
 
         // $chemin = "fichiers_information/annonces.csv";
         $fichier = "https://prog101.com/cours/kb9/bd/annonces.csv";
-        if ($fichier === false) {
+        $donnéesFichier = fopen($fichier, "r");
+        if ($donnéesFichier === false) {
             echo "Erreur lors de la lecture du fichier.";
             exit;
         } else {
-            $rangées = [];
-            $donnéesFichier = fopen($fichier, "r");
-            while (($ligne = fgetcsv($donnéesFichier, $maxLongueur, $delimiteur, "\"", "\\")) !== false) {
-                $rangées[] = $ligne;
-                if (count($rangées) === 6) {
-                    $titre = $rangées[0];
-                    $description = $rangées[1];
-                    $prix = $rangées[2];
-                    $negociable = $rangées[3];
-                    $image = $rangées[4];
-                    $vendeur = $rangées[5];
-                    
-                    creerPoste($titre, $description, $prix, $negociable, $image, $vendeur);
-                    $rangées = [];
-                }
-            }
-            $titre = $description = $prix = $negociable = $image = $vendeur = "";
-
             $delimiteur = "|";
             $maxLongueur = 1000;
+
+            $titre = $description = $prix = $negociable = $image = $vendeur = "";
+
+            while (($ligne = fgetcsv($donnéesFichier, $maxLongueur, $delimiteur, "\"", "\\")) !== false) {
+
+                $titre = $ligne[0];
+                $description = $ligne[1];
+                $prix = $ligne[2];
+                $negociable = $ligne[3];
+                $image = $ligne[4];
+                $vendeur = $ligne[5];
+
+                creerPoste($titre, $description, $prix, $negociable, $image, $vendeur);
+            }
+            fclose($donnéesFichier);
         }
         ?>
 
