@@ -20,28 +20,31 @@
 
 
         // $chemin = "fichiers_information/annonces.csv";
-        $chemin = "https://prog101.com/cours/kb9/bd/annonces.csv";
-        if (file_exists($chemin) && fopen($chemin, "r") !== false)
-            $fich = fopen($chemin, "r");
-        else
-            die("Erreur lors de l'ouverture du fichier.");
-        
-        $titre = $description = $prix = $negociable = $image = $vendeur = "";
-
-        $delimiteur = "|";
-        $maxLongueur = 1000;
-
-        while (!feof($fich)) {
-            $ligne = fgetcsv($fich, $maxLongueur, $delimiteur, "\"", "\\");
-            if ($ligne !== false && count($ligne) === 6) {
-                $titre = $ligne[0];
-                $description = $ligne[1];
-                $prix = $ligne[2];
-                $negociable = $ligne[3];
-                $image = $ligne[4];
-                $vendeur = $ligne[5];
+        $fichier = "https://prog101.com/cours/kb9/bd/annonces.csv";
+        if ($fichier === false) {
+            echo "Erreur lors de la lecture du fichier.";
+            exit;
+        } else {
+            $rangées = [];
+            $donnéesFichier = fopen($fichier, "r");
+            while (($ligne = fgetcsv($donnéesFichier, $maxLongueur, $delimiteur, "\"", "\\")) !== false) {
+                $rangées[] = $ligne;
+                if (count($rangées) === 6) {
+                    $titre = $rangées[0];
+                    $description = $rangées[1];
+                    $prix = $rangées[2];
+                    $negociable = $rangées[3];
+                    $image = $rangées[4];
+                    $vendeur = $rangées[5];
+                    
+                    creerPoste($titre, $description, $prix, $negociable, $image, $vendeur);
+                    $rangées = [];
+                }
             }
-            creerPoste($titre, $description, $prix, $negociable, $image, $vendeur);
+            $titre = $description = $prix = $negociable = $image = $vendeur = "";
+
+            $delimiteur = "|";
+            $maxLongueur = 1000;
         }
         ?>
 
