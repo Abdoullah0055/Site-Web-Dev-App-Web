@@ -18,7 +18,7 @@
         // if(file_exists("../../fichiers_information/annonces.csv"))
         //     echo "Le troisieme chemin est bon.";
 
-
+ 
         // $chemin = "fichiers_information/annonces.csv";
         $fichier = "https://prog101.com/cours/kb9/bd/annonces.csv";
         $donnéesFichier = fopen($fichier, "r");
